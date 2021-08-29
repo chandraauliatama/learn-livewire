@@ -17,7 +17,7 @@ class CreateTodolistsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('body');
-            $table->boolean('is_active')->default(true);
+            $table->string('status')->default(\App\Models\Todolist::PENDING);
             $table->timestamps();
         });
     }

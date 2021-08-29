@@ -27,4 +27,11 @@ class TodolistFactory extends Factory
             'body' => $this->faker->sentence(4),
         ];
     }
+
+    public function ofUser(User $user)
+    {
+        return $this->state([
+            'user_id' => $user->id,
+        ]);
+    }
 }
