@@ -27,6 +27,8 @@
             <button class="btn-todo btn-yellow mb-2 sm:mb-0 mr-2" wire:click.stop="inProgress">
                 <x-icons.clock></x-icons.clock>
             </button>
+            <livewire:edit-todo :todo="$todo"></livewire:edit-todo>
+            <livewire:delete-todo :todo="$todo"></livewire:delete-todo>
         </div>
     </div>
 </div>
