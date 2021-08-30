@@ -37,6 +37,8 @@
             <main>
                 {{ $slot }}
             </main>
+            <p class="text-sm text-center text-gray-500 dark:text-gray-300">© {{ date('Y')}} Made By Chandra Aulia Tama.
+            </p>
         </div>
         @livewireScripts
     </body>
