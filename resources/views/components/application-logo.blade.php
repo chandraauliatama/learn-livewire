@@ -1,1 +1,1 @@
-<h1 class="text-xl text-blue-800 font-bold hover:text-blue-500">TodoList App</h1>
+<h1 class="text-3xl text-blue-800 font-extrabold hover:text-blue-500">ListSepuh</h1>

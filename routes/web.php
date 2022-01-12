@@ -17,8 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['guest']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/todopage', function () {
+        return view('todopage');
+    })->name('todopage');
+    Route::get('/stopwatchpage', function () {
+        return view('stopwatchpage');
+    })->name('stopwatchpage');
+});
+
 
 require __DIR__.'/auth.php';

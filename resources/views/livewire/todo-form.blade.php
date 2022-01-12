@@ -1,6 +1,6 @@
 <div class="w-full">
     <form class="w-full mb-2" wire:submit.prevent="">
-        <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
+        <div class="flex items-center border-b-2 border-teal-500 py-2">
             <input wire:model="body"
                 class="shadow h-12 appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-4 leading-tight focus:outline-none"
                 type="text" placeholder="To do ....." aria-label="Full name">

@@ -5,16 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <a href="{{ route('todopage') }}">
+                        <x-application-logo/>
                     </a>
                 </div>
 
                 @if(Auth::user())
                     <!-- Navigation Links For Auth User-->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                        <x-nav-link :href="route('todopage')" :active="request()->routeIs('todopage')">
+                            {{ __('To Do Lists') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('stopwatchpage')" :active="request()->routeIs('stopwatchpage')">
+                            {{ __('Stop Watch Page') }}
                         </x-nav-link>
                     </div>
                 @endif
@@ -77,8 +80,11 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @if(Auth::user())
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-responsive-nav-link :href="route('todopage')" :active="request()->routeIs('todopage')">
+                    {{ __('ToDoLists') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('stopwatchpage')" :active="request()->routeIs('stopwatchpage')">
+                    {{ __('Stop Watch Page') }}
                 </x-responsive-nav-link>
             @elseif(!Auth::user())
                 <x-responsive-nav-link :href="route('login')">
