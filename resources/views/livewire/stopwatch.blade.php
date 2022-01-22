@@ -21,43 +21,34 @@
     </div>
     <h1 class="text-xl md:text-3xl text-center my-3 ">{{ __("since last time you clicked start") }}</h1>
     @if($this->stopwatch)
-      <script>
-        //Get detail time data
-        var seconds = {{$this->stopwatch->s}}; 
-        var minutes = {{$this->stopwatch->i}}; 
-        var hours = {{$this->stopwatch->h}};
-        var days = {{$this->stopwatch->days}};
+        <script>
+            //Get detail time data
+            var seconds = {{$this->stopwatch->s}}; 
+            var minutes = {{$this->stopwatch->i}}; 
+            var hours = {{$this->stopwatch->h}};
+            var days = {{$this->stopwatch->days}};
 
-        //create variable for shortcut js
-        var appendSeconds = document.getElementById("seconds")
-        var appendMinutes = document.getElementById("minutes")
-        var appendHours = document.getElementById("hours")
-        var appendDays = document.getElementById("days")
-        
-        //stopwatch function
-        function myFunction(){
-          seconds++
-          if(seconds == 60){
-            seconds = 0;
-            minutes++
-          }
-          if(minutes == 60){
-            minutes = 0;
-            hours++
-          }
-          if(hours == 24){
-            hours = 0;
-            days++
-          }
-          appendDays.innerHTML = days
-          appendHours.innerHTML = hours
-          appendMinutes.innerHTML = minutes
-          appendSeconds.innerHTML =  seconds;
-          setTimeout(myFunction, 1000);
-        }
+            //stopwatch function
+            function myFunction(){
+                seconds++;
+                [seconds, minutes] = checker(seconds, minutes, 60, "seconds");
+                [minutes, hours] = checker(minutes, hours, 60, "minutes");
+                [hours, days] = checker(hours, days, 24, "hours");
+                document.getElementById("days").innerHTML = days;
+                setTimeout(myFunction, 1000);
+            }
 
-        //run function after page loaded
-        window.onload=myFunction
-      </script>
+            function checker(a, b, c = 60, d = "seconds") {
+                if (a == c) {
+                    a = 0
+                    b++
+                }
+                document.getElementById(d).innerHTML = a;
+                return [a, b]
+            }
+
+            //run function after page loaded
+            window.onload=myFunction
+        </script>
     @endif
 </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use DateTime;
-use DateTimeZone;
 use Exception;
 use Livewire\Component;
 
@@ -18,17 +17,13 @@ class Stopwatch extends Component
     public function getStopwatchProperty()
     {
         // Get user start time from db and current time
-        try { 
-            $start = auth()->user()->Stopwatches()->firstOrFail()->timedetail;
-            $diff = new DateTime($start);
-            $now = new DateTime();
-            $now->modify('+7 hour');
-            $diff = $diff->diff($now);
+        try {
+            $lastClick = new DateTime(auth()->user()->Stopwatches()->firstOrFail()->timedetail);
+            $now = new DateTime('+7 hour');
+            return $lastClick->diff($now);
         } catch (Exception $e) {
-            $diff = false;
+            return $lastClick = false;
         }
-        
-        return $diff;
     }
 
     public function render()
