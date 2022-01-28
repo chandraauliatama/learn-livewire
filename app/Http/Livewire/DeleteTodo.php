@@ -10,18 +10,13 @@ class DeleteTodo extends Component
 {
     use AuthorizesRequests;
 
-    public $todo;
-
-    public function mount(Modeltodo $todo)
-    {
-        $this->todo = $todo;
-    }
+    public $todoId;
 
     public function render()
     {
         return <<<'blade'
                 <button class="btn-todo btn-red mb-2 sm:mb-0"
-                wire:click.stop="$emitTo('todo-form', 'todoRemove', {{$this->todo->id}})" wire:loading.attr="disabled">
+                wire:click.stop="$emitTo('todo-form', 'todoRemove', {{$todoId}})" wire:loading.attr="disabled">
                     <x-icons.trash></x-icons.trash>
                 </button>
         blade;

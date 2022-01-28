@@ -3,11 +3,11 @@
         <span class="flex-shrink-0
             {{ $todo->isCompleted() ? 'btn-green' : 'btn-gray' }}
             {{ !$todo->isInProgress() ?: 'btn-yellow' }}
-            text-sm border-4 text-white py-1 px-2 rounded no-underline">
+            text-sm border-4 text-white py-1 px-2 rounded-md no-underline">
             {{ $todo->status }}
         </span>
     </span>
-    <div class="relative task w-full transition duration-500 ease-in-out border-2 flex flex-wrap justify-between items-center p-3 pt-6 hover:bg-gray-300 cursor-pointer {{ !$todo->isCompleted() ?: 'border-green-600'}} {{ !$todo->isInProgress() ?: 'border-yellow-300' }}"
+    <div class="relative task w-full transition duration-500 ease-in-out border-2 rounded-lg flex flex-wrap justify-between items-center p-3 pt-6 hover:bg-gray-300 cursor-pointer {{ !$todo->isCompleted() ?: 'border-green-600'}} {{ !$todo->isInProgress() ?: 'border-yellow-300' }}"
         wire:click="complete">
 
         <span class="flex sm:flex-row items-center text-left pb-2">
@@ -27,8 +27,8 @@
             <button class="btn-todo btn-yellow mb-2 sm:mb-0 mr-2" wire:click.stop="inProgress">
                 <x-icons.clock></x-icons.clock>
             </button>
-            <livewire:edit-todo :todo="$todo"></livewire:edit-todo>
-            <livewire:delete-todo :todo="$todo"></livewire:delete-todo>
+            <livewire:edit-todo :todoId="$todo->id"></livewire:edit-todo>
+            <livewire:delete-todo :todoId="$todo->id"></livewire:delete-todo>
         </div>
     </div>
 </div>

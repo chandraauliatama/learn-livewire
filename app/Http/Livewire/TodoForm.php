@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Todolist as Modeltodo;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TodoForm extends Component
 {
@@ -40,20 +41,22 @@ class TodoForm extends Component
             'body' => $this->body,
         ]);
 
-        $this->emitTo('todo-list', 'todoAdded');
+        $this->emitTo('todo-list', 'todoRefresh');
 
         $this->reset();
     }
 
     public function delete($todoId)
     {
-        $todo = ModelTodo::find($todoId);
+        try {
+            $todo = ModelTodo::findOrFail($todoId);
+            $todo->delete();
+            $this->emitTo('todo-list', 'todoRefresh');
+            $this->reset();
+        } catch (ModelNotFoundException $e) {
+            $this->emitTo('todo-list', 'todoRefresh');
+        }
 
-        $todo->delete();
-
-        $this->emitTo('todo-list', 'todoRemoved');
-
-        $this->reset();
     }
 
     public function editing($todoId)
@@ -73,7 +76,7 @@ class TodoForm extends Component
 
         $this->todo->update(['body' => $this->body]);
 
-        $this->emitTo('todo-list', 'todoEdited');
+        $this->emitTo('todo-list', 'todoRefresh');
 
         $this->reset();
     }

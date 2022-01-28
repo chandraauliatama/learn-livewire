@@ -7,9 +7,7 @@ use Livewire\Component;
 class TodoList extends Component
 {
     protected $listeners = [
-        'todoAdded' => '$refresh',
-        'todoEdited' => '$refresh',
-        'todoRemoved' => '$refresh',
+        'todoRefresh' => '$refresh',
     ];
     public function getTodosProperty()
     {

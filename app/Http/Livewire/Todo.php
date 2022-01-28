@@ -3,12 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Todolist;
 
 class Todo extends Component
 {
     public $todo;
 
-    public function mount(\App\Models\Todolist $todo)
+    public function mount(Todolist $todo)
     {
         $this->todo = $todo;
     }
