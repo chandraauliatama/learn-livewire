@@ -14,7 +14,16 @@ class StopwatchForm extends Component
 
     public $timedetail;
 
-    protected $rules = ['timedetail' => 'required'];
+    protected $rules = ['timedetail' => 'required|before:+7hours'];
+    
+    protected $messages = [
+        'timedetail.before' => 'set time before now'
+    ];
+
+    public function updated($timedetail)
+    {
+        $this->validateOnly($timedetail);
+    }
 
     public function submit()
     {
