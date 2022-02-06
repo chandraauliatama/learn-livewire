@@ -4,19 +4,19 @@
         {{-- <div class="text-2xl mr-1 font-extralight">in</div> --}}
         <div class="w-24mx-1 p-2 bg-white text-blue-500 rounded-lg">
             <div class="font-mono leading-none" id="days">0</div>
-            <div class="text-sm leading-none">Days</div>
+            <div class="text-sm leading-none">{{ __('Days') }}</div>
         </div>
         <div class="w-24 mx-1 p-2 bg-white text-blue-500 rounded-lg">
             <div class="font-mono leading-none" id="hours">0</div>
-            <div class="text-sm leading-none">Hours</div>
+            <div class="text-sm leading-none">{{ __('Hours') }}</div>
         </div>
         <div class="w-24 mx-1 p-2 bg-white text-blue-500 rounded-lg">
             <div class="font-mono leading-none" id="minutes">0</div>
-            <div class="text-sm leading-none">Minutes</div>
+            <div class="text-sm leading-none">{{ __('Minutes') }}</div>
         </div>
         <div class="w-24 mx-1 p-2 bg-white text-blue-500 rounded-lg">
             <div class="font-mono leading-none" id="seconds">0</div>
-            <div class="text-sm leading-none">Seconds</div>
+            <div class="text-sm leading-none">{{ __('Seconds') }}</div>
         </div>
     </div>
     <h1 class="text-xl md:text-3xl text-center my-3 ">{{ __("since last time you clicked start") }}</h1>
