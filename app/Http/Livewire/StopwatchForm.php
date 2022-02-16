@@ -20,10 +20,8 @@ class StopwatchForm extends Component
 
     private function deleteOldStopwatch()
     { 
-        $lastStopwatch = auth()->user()->Stopwatches()->first();
-        if($lastStopwatch) {
-            $lastStopwatch->delete();
-        }
+        $oldStopwatch = auth()->user()->stopwatches()->first(); 
+        $oldStopwatch ? $oldStopwatch->delete() : null;
     }
 
     public function updated($timedetail)

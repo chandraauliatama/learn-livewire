@@ -36,11 +36,9 @@ class TodoForm extends Component
     public function delete($todoId)
     {
         $todo = ModelTodo::find($todoId);
-        if($todo) {
-            $todo->delete();
-            $this->emitTo('todo-list', 'todoRefresh');
-            $this->reset();
-        }
+        $todo ? $todo->delete() : $this->reset();
+        $this->emitTo('todo-list', 'todoRefresh');
+        $this->reset();
     }
 
     public function editing($todoId)

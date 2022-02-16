@@ -11,7 +11,7 @@ class TodoList extends Component
     ];
     public function getTodosProperty()
     {
-        return auth()->user()->Todolists()->latest()->get();
+        return auth()->user()->todolists()->latest()->get();
     }
     public function render()
     {

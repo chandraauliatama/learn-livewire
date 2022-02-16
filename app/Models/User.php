@@ -42,12 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Todolists()
+    public function todolists()
     {
         return $this->hasMany(Todolist::class);
     }
 
-    public function Stopwatches()
+    public function stopwatches()
     {
         return $this->hasOne(Stopwatch::class);
     }

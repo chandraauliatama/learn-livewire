@@ -16,13 +16,11 @@ class Stopwatch extends Component
     public function getStopwatchProperty()
     {
         // Get user start time from db and current time
-        $stopWatch = auth()->user()->Stopwatches()->first();
+        $stopWatch = auth()->user()->stopwatches()->first();
         if($stopWatch) {
             $stopWatch = new DateTime($stopWatch->timedetail);
-            $timeNow = new DateTime('+7 hour');
-            return $stopWatch->diff($timeNow);
+            return $stopWatch->diff(new DateTime('+7 hour'));
         }
-        return $stopWatch;
     }
 
     public function render()
